@@ -29,7 +29,7 @@
                     <span>{{ doughType.description }}</span>
                 </label>
             </div>
-
+            </div>
         </div>
 
         <div class="content__diameter">
