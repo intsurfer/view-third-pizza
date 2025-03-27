@@ -112,8 +112,8 @@
 </style>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/ds-system/ds.scss";
-@import "@/assets/scss/mixins/mixins.scss";
+@import "/api/public/scss/ds-system/ds.scss";
+@import "/api/public/scss/mixins/mixins.scss";
 
 .sign-form {
   @include pf_center-all;
@@ -129,7 +129,7 @@
   padding-bottom: 32px;
   padding-left: 32px;
   
-  background: $white url("@/assets/img/popup.svg") no-repeat center top;
+  background: $white url("/api/public/img/popup.svg") no-repeat center top;
   box-shadow: $shadow-light;
   
   button {

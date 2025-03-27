@@ -1,8 +1,28 @@
 <template>
   <header class="header">
-    <!--   Шаблон   --->
+    <div class="header__logo">
+      <router-link :to="{ name: 'home' }" class="logo">
+        <img
+          :src="getPublicImage('/public/img/logo.svg')"
+          alt="V!U!E! Pizza logo"
+          width="90"
+          height="40"
+        />
+      </router-link>
+    </div>
+    <div class="header__cart">
+      <router-link :to="{ name: 'cart' }">{{ cartStore.total }} ₽</router-link>
+    </div>
     <div class="header__user">
-      <!--   Шаблон   --->
+      <router-link v-if="authStore.isAuthenticated" :to="{ name: 'profile' }">
+        <img
+          :src="getPublicImage(authStore.user.avatar)"
+          :alt="authStore.user.name"
+          width="32"
+          height="32"
+        />
+        <span>{{ authStore.user.name }}</span>
+      </router-link>
       <div
         v-if="authStore.isAuthenticated"
         class="header__logout"
@@ -25,6 +45,7 @@ import { getPublicImage } from "@/common/helpers/public-image";
 
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+
 const router = useRouter();
 
 const logout = async () => {
@@ -68,7 +89,7 @@ const logout = async () => {
 
     color: $white;
     background-color: $green-500;
-    background-image: url("@/assets/img/cart.svg");
+    background-image: url("/api/public/img/cart.svg");
     background-repeat: no-repeat;
     background-position: 20px center;
     background-size: 29px 27px;
@@ -137,6 +158,8 @@ const logout = async () => {
 }
 
 .header__logout {
+  cursor: pointer;
+
   &::before {
     display: inline-block;
 
@@ -147,7 +170,7 @@ const logout = async () => {
     content: "";
     vertical-align: middle;
 
-    background: url("@/assets/img/login.svg") no-repeat center;
+    background: url("/api/public/img/login.svg") no-repeat center;
     background-size: auto 50%;
   }
 }
@@ -163,7 +186,7 @@ const logout = async () => {
     content: "";
     vertical-align: middle;
 
-    background: url("@/assets/img/login.svg") no-repeat center;
+    background: url("/api/public/img/login.svg") no-repeat center;
     background-size: auto 50%;
   }
 }

@@ -14,7 +14,7 @@
           >
             <div class="filling">
               <img
-                :src="getImage(ingredientType.image)"
+                :src="getPublicImage(ingredientType.image)"
                 :alt="ingredientType.name"
               />
               {{ ingredientType.name }}
@@ -55,6 +55,8 @@
   import { toRef } from "vue";
   import AppDrag from "@/common/components/AppDrag.vue";
   import { MAX_INGREDIENT_COUNT } from "@/common/constants";
+  import { getPublicImage } from "@/common/helpers/public-image";
+
   
   const props = defineProps({
     values: {
@@ -91,9 +93,6 @@
     return setValue(ingredient, Math.min(MAX_INGREDIENT_COUNT, Number(count)));
   };
   
-  const getImage = (image) => {
-    return new URL(`../../assets/img/${image}`, import.meta.url).href;
-  };
   </script>
   
   <style lang="scss" scoped>
